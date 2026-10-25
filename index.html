@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free, private check of your Supabase row-level security, grants and functions. Runs in your browser; nothing is uploaded." />
+    <title>RLS Check · Supabase security review</title>
+  </head>
+  <body>
+    <main class="wrap">
+      <header>
+        <h1>RLS Check</h1>
+        <p class="lead">
+          A quick security review of a Supabase project: row-level security, table grants, policies,
+          SECURITY DEFINER functions and storage buckets, explained in plain English with the SQL to fix each problem.
+        </p>
+        <p class="privacy">
+          Private by design: the query only reads your database's settings (never your data), and the report is
+          made in this browser tab. Nothing is sent anywhere.
+        </p>
+      </header>
+
+      <section class="step">
+        <h2><span class="num">1</span> Run this read-only query in Supabase → SQL Editor</h2>
+        <div class="sql-box">
+          <pre id="sql"></pre>
+          <button id="copy" type="button">Copy query</button>
+        </div>
+      </section>
+
+      <section class="step">
+        <h2><span class="num">2</span> Paste the result</h2>
+        <p class="hint">Copy the single value in the <code>rls_check_snapshot</code> column.</p>
+        <textarea id="input" rows="7" spellcheck="false" placeholder='{"tool": "rls-check", ...}'></textarea>
+        <div class="row">
+          <button id="run" type="button" class="primary">Check my project</button>
+          <button id="example" type="button">Try an example with problems</button>
+        </div>
+        <p id="error" class="error" role="alert" hidden></p>
+      </section>
+
+      <section id="report" class="step" hidden aria-live="polite">
+        <h2><span class="num">3</span> Report</h2>
+        <div id="summary" class="summary"></div>
+        <div id="findings"></div>
+        <button id="download" type="button">Download report (Markdown)</button>
+      </section>
+
+      <footer>
+        Built by <a href="https://rishendra-myaka.github.io">Rishendra Myaka</a> ·
+        Expo &amp; Supabase developer ·
+        <a href="https://github.com/rishendra-myaka/supabase-rls-check">Source on GitHub</a> ·
+        Not affiliated with Supabase. A helper for review, not a guarantee of security.
+      </footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

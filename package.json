@@ -1,0 +1,25 @@
+{
+  "name": "supabase-rls-check",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "node --no-warnings --test test/*.test.ts",
+    "check": "node --no-warnings src/cli.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4"
+  },
+  "description": "Plain-English security review of a Supabase project: RLS, grants, policies, SECURITY DEFINER functions, storage buckets.",
+  "license": "MIT",
+  "author": "Rishendra Myaka",
+  "bin": {
+    "rls-check": "src/cli.ts"
+  }
+}
